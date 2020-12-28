@@ -1,6 +1,11 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import {
+  AppBar,
+  Toolbar,
+  Tabs,
+  Tab,
+  Button
+} from '@material-ui/core';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import { makeStyles } from '@material-ui/styles';
 import logo from '../../assets/logo.svg';
@@ -27,7 +32,27 @@ const useStyles = makeStyles(theme => ({
   },
   logo: {
     height: '7em',
-  }
+  },
+  // extends the tabs over to the right side
+  tabContainer: {
+    marginLeft: 'auto',
+  },
+  tab: {
+    ...theme.typography.tab,
+    minWidth: 10,
+    // pixels used to maintain constant spacing regardless of screen size
+    marginLeft: '25px'
+  },
+  button: {
+    borderRadius: '50px',
+    marginLeft: '50px',
+    marginRight: '25px',
+    fontFamily: 'Pacifico',
+    fontSize: '1rem',
+    textTransform: 'none',
+    height: '45px',
+    color: 'white',
+  },
 }));
 
 const Header = (props) => {
@@ -40,6 +65,14 @@ const Header = (props) => {
           <AppBar position="fixed">
             <Toolbar disableGutters>
               <img alt="company logo" className={classes.logo} src={logo} />
+              <Tabs value={0} className={classes.tabContainer}>
+                <Tab className={classes.tab} label="Home"/>
+                <Tab className={classes.tab} label="Services"/>
+                <Tab className={classes.tab} label="The Revolution"/>
+                <Tab className={classes.tab} label="About"/>
+                <Tab className={classes.tab} label="Contact Us"/>
+              </Tabs>
+              <Button variant="contained" color="secondary" className={classes.button}>Free Estimate</Button>
             </Toolbar>
           </AppBar>
         </ElevationScroll>
