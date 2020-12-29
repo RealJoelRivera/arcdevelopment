@@ -9,6 +9,7 @@ import {
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import { makeStyles } from '@material-ui/styles';
 import logo from '../../assets/logo.svg';
+import { Link } from 'react-router-dom';
 
 const ElevationScroll = (props) => {
   const { children } = props;
@@ -74,11 +75,11 @@ const Header = (props) => {
                 onChange={handleChange}
                 className={classes.tabContainer}
               >
-                <Tab className={classes.tab} label="Home"/>
-                <Tab className={classes.tab} label="Services"/>
-                <Tab className={classes.tab} label="The Revolution"/>
-                <Tab className={classes.tab} label="About"/>
-                <Tab className={classes.tab} label="Contact Us"/>
+                <Tab className={classes.tab} component={Link} to="/home" label="Home"/>
+                <Tab className={classes.tab} component={Link} to="/services" label="Services"/>
+                <Tab className={classes.tab} component={Link} to="/revolution" label="The Revolution"/>
+                <Tab className={classes.tab} component={Link} to="/about" label="About"/>
+                <Tab className={classes.tab} component={Link} to="/contact" label="Contact Us"/>
               </Tabs>
               <Button variant="contained" color="secondary" className={classes.button}>Free Estimate</Button>
             </Toolbar>
