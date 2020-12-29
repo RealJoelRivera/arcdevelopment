@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -56,8 +56,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Header = (props) => {
-
   const classes = useStyles();
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, value) => {
+    setValue(value);
+  };
 
     return (
       <>
@@ -65,7 +69,11 @@ const Header = (props) => {
           <AppBar position="fixed">
             <Toolbar disableGutters>
               <img alt="company logo" className={classes.logo} src={logo} />
-              <Tabs value={0} className={classes.tabContainer}>
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                className={classes.tabContainer}
+              >
                 <Tab className={classes.tab} label="Home"/>
                 <Tab className={classes.tab} label="Services"/>
                 <Tab className={classes.tab} label="The Revolution"/>
