@@ -34,13 +34,25 @@ const useStyles = makeStyles(theme => ({
     ...theme.mixins.toolbar,
     // displays the content that was hiding behind the toolbar
     marginBottom: '3em',
+    [theme.breakpoints.down('md')]: {
+      marginBottom: '2em',
+    },
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: '1.25em'
+    },
   },
   logo: {
     height: '8em',
+    [theme.breakpoints.down('md')]: {
+      height: '7em',
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '5.5em'
+    },
   },
   logoContainer: {
     padding: 0,
-    "&:hover": {
+    '&:hover': {
       backgroundColor: 'transparent'
     },
   },
@@ -81,7 +93,7 @@ const useStyles = makeStyles(theme => ({
 const Header = (props) => {
   const classes = useStyles();
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const matches = useMediaQuery(theme.breakpoints.down('sm'));
   const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
@@ -138,21 +150,21 @@ const Header = (props) => {
         onChange={handleChange}
         className={classes.tabContainer}
       >
-        <Tab className={classes.tab} component={Link} to="/" label="Home"/>
+        <Tab className={classes.tab} component={Link} to='/' label='Home'/>
         <Tab
           aria-owns={anchorEl ? 'simple-menu' : undefined}
           aria-haspopup={anchorEl ? 'true' : undefined}
           className={classes.tab}
           component={Link}
           onMouseOver={(event) => handleClick(event)}
-          to="/services"
-          label="Services"
+          to='/services'
+          label='Services'
         />
-        <Tab className={classes.tab} component={Link} to="/revolution" label="The Revolution"/>
-        <Tab className={classes.tab} component={Link} to="/about" label="About"/>
-        <Tab className={classes.tab} component={Link} to="/contact" label="Contact Us"/>
+        <Tab className={classes.tab} component={Link} to='/revolution' label='The Revolution'/>
+        <Tab className={classes.tab} component={Link} to='/about' label='About'/>
+        <Tab className={classes.tab} component={Link} to='/contact' label='Contact Us'/>
       </Tabs>
-      <Button variant="contained" color="secondary" className={classes.button}>Free Estimate</Button>
+      <Button variant='contained' color='secondary' className={classes.button}>Free Estimate</Button>
       <Menu
         id='simple-menu'
         anchorEl={anchorEl}
@@ -185,16 +197,16 @@ const Header = (props) => {
     return (
       <>
         <ElevationScroll>
-          <AppBar position="fixed">
+          <AppBar position='fixed'>
             <Toolbar disableGutters>
               <Button
                 component={Link}
-                to="/"
+                to='/'
                 className={classes.logoContainer}
                 onClick={() => setValue(0)}
                 disableRipple
               >
-                <img alt="company logo" className={classes.logo} src={logo} />
+                <img alt='company logo' className={classes.logo} src={logo} />
               </Button>
               {matches ? null : tabs()}
             </Toolbar>
