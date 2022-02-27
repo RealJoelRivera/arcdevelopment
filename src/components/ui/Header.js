@@ -16,7 +16,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu'
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
 const ElevationScroll = (props) => {
   const { children } = props;
@@ -200,19 +199,19 @@ const Header = (props) => {
     </React.Fragment>
   );
 
-  const drawer = (
-    <>
-      <SwipeableDrawer disableBackdropTransition={!iOS} disableDiscovery={iOS}
-        open={openDrawer}
-        onClose={() => {setOpenDrawer(false)}}
-        onOpen={() => setOpenDrawer(true)}
-      >
-        <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
-        <MenuIcon />
-        </IconButton>
-      </SwipeableDrawer>;
-    </>
-  )
+  // const drawer = (
+  //   <>
+  //     <SwipeableDrawer disableBackdropTransition={!iOS} disableDiscovery={iOS}
+  //       open={openDrawer}
+  //       onClose={() => {setOpenDrawer(false)}}
+  //       onOpen={() => setOpenDrawer(true)}
+  //     >
+  //       <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
+  //       <MenuIcon />
+  //       </IconButton>
+  //     </SwipeableDrawer>;
+  //   </>
+  // )
 
     return (
       <>
@@ -228,7 +227,7 @@ const Header = (props) => {
               >
                 <img alt='company logo' className={classes.logo} src={logo} />
               </Button>
-              {matches ? drawer : tabs()}
+              {matches ? null : tabs()}
             </Toolbar>
           </AppBar>
         </ElevationScroll>
